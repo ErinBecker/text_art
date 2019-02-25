@@ -12,7 +12,9 @@ library(tidytext)
 # informational text
 # need to find line numbers starting with * and keep only text between those lines
 
-url <- "https://www.gutenberg.org/files/76/76-0.txt"
+url <- "https://www.gutenberg.org/files/76/76-0.txt" #huck finn
+# url <- "https://www.gutenberg.org/files/1342/1342-0.txt" #pride and prej
+
 book <- readLines(url)
 info_lines <- grep("^\\*", book)
 book <- book[(info_lines[1]+1):(info_lines[2]-1)] %>%
@@ -41,14 +43,14 @@ select_word <- function(x) {
 }
 
 sentence <- paste(select_word("1"), select_word("2"), select_word("3"),
-      select_word("5"), select_word("8"), 
+      select_word("5"), select_word("8"), select_word("13"),
       sep = " ")
 
 # write out to file
-out_file <- "output/fib_test2.txt"
+out_file <- "output/pi_test2.txt"
 
-sentence <- paste(select_word("1"), select_word("2"), select_word("3"),
-                  select_word("5"), select_word("8"), 
+sentence <- paste(select_word("3"), select_word("1"), select_word("4"),
+                  select_word("1"), select_word("5"), select_word("9"),
                   sep = " ")
 write(sentence, out_file, append = TRUE)
 
